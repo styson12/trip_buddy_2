@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Login and Registration</title>
+</head>
+<body>
+    <h1>Registration</h1>
+    {% if messages %}
+        <ul class="messages">    
+            {% for message in messages %}    
+                <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>    
+            {% endfor %}
+        </ul>
+    {% endif %}
+    <div class="form-group">
+        <form action="/process_login" method="POST">
+            {% csrf_token %}
+            <input type="hidden" name="form" value="register">
+            First Name:<input type="text" name="first_name">
+            Last Name: <input type="text" name="last_name">
+            Email: <input type="text" name="email">
+            Password: <input type="password" name="password">
+            Confirm PW: <input type="password" name="confirm_pw">
+            <input type="submit" value="Register">
+        </form>
+        <h1>Login</h1>
+        <form action="/process_login" method="POST">
+            {% csrf_token %}
+            <input type="hidden" name="form" value="login">
+            Email: <input type="text" name="email">
+            Password: <input type="password" name="password">
+            <input type="submit" value="Log In">
+        </form>
+    </div>
+</body>
+</html>

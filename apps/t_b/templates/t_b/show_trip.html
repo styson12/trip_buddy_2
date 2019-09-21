@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Show Trip</title>
+</head>
+<body>
+    <h1>Hello {{ first_name }}</h1>
+    <a href="/dashboard">Dashboard</a>
+    <a href="/logout">Logout</a>
+    <h3>{{ trip.destination }}</h3>
+    <p>Start Date: {{ trip.start_date }}</p>
+    <p>End Date: {{ trip.end_date }}</p>
+    <p>Created On: {{ trip.created_at }}</p>
+    <p>Last Updated: {{ trip.updated_at }}</p>
+    <p>Plan: {{ trip.plan}}</p>
+    <p>Created by: {{ trip.creator.first_name }}</p>
+    <h4>People who've joined the trip:</h4>
+    {% for user in trip.joined_users.all %}
+        <p>{{user.first_name}}</p>
+    {% endfor %}
+</body>
+</html>
